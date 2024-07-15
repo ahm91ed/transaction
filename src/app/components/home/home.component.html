@@ -1,0 +1,62 @@
+
+
+
+
+<div class="container  py-5 text-center">
+    <div class="row g-4">
+        <div class="col-md-6">
+            <input [(ngModel)]="term" class="form-control  mb-3" type="search" placeholder="search by Name..."> 
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <td class="text-info h4">ID</td>
+                        <td class="text-info h4">Customer Name</td>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr *ngFor="let customer of customersName | search:term ">
+                        <td class=" h4">{{customer.id}}</td>
+                        <td class=" h4"> {{customer.name}}</td>
+                    </tr>
+                </tbody>
+               </table>
+            
+        </div>
+
+
+        <div class="col-md-6">
+            <input [(ngModel)]="amountTerm" class="form-control mb-3" type="search" placeholder="search by Amount"> 
+
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <td class="text-info h4">Customer ID</td>
+                        <td class="text-info h4">transaction amount</td>
+                        <td class="text-info h4">transaction date</td>
+                    </tr>
+                </thead>
+
+                <tbody> 
+                    <tr *ngFor="let item of transactionData | amount :amountTerm ">
+                        <td class=" h4">{{item.customer_id }}</td>
+                        <td class=" h4"> {{item.amount}} </td>
+                        <td class=" h4"> {{item.date}} </td>
+                    </tr>
+                </tbody>
+            </table>
+            
+        </div>
+    </div>
+</div>
+
+<div class="mx-auto w-50">
+    <a routerLink="chartData" class="btn btn-danger">  click to open the chart  </a>
+<router-outlet></router-outlet>
+</div>
+
+
+
+
+
+
